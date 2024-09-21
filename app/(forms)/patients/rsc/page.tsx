@@ -11,6 +11,7 @@ export async function fetchPatients(orgId: string) {
 
 const Page = protect({
   permission: "org:patients:read",
+  redirectUrl: 'sign-in'
 }).component<PropsWithChildren>(async ({ children, auth }) => {
   const patientNames = await fetchPatients(auth.orgId);
 
