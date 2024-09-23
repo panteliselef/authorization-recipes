@@ -13,7 +13,15 @@ export default function Home() {
           <Link href="/patients/rcc">Go to patients (Client-only)</Link>
         </Button>
 
+        <Button>
+          <Link href="/stripe/rsc">Go to Stripe (RSC)</Link>
+        </Button>
 
+        <Button>
+          <Link href="/stripe/rsc-hide-page">
+            Go to Stripe (RSC hide w/ Modal)
+          </Link>
+        </Button>
 
         <Button>
           <Link href="/admin">Admin panel</Link>

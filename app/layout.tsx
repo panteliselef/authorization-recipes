@@ -37,12 +37,16 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ClerkProvider>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          <SignedOut>
-            <SignInButton mode="redirect">SignIn</SignInButton>
-          </SignedOut>
+          <div className="h-11 flex">
+            <SignedIn>
+              <div className="ml-auto">
+                <UserButton />
+              </div>
+            </SignedIn>
+            <SignedOut>
+              <SignInButton mode="redirect">SignIn</SignInButton>
+            </SignedOut>
+          </div>
           {children}
         </ClerkProvider>
       </body>

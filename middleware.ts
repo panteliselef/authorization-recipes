@@ -1,5 +1,7 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
+
+const isProtectedRoute = createRouteMatcher(["/stripe(.*)"]);
 
 export default clerkMiddleware((auth, req) => {
   const { userId, orgId } = auth();
@@ -15,6 +17,8 @@ export default clerkMiddleware((auth, req) => {
 
     return NextResponse.rewrite(orgSelection);
   }
+
+  if (isProtectedRoute(req)) auth().protect();
 });
 
 export const config = {

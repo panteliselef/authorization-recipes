@@ -4,21 +4,18 @@ import { waitFor } from "@/lib/server";
 import { canReadPatientsWithRedirect } from "@/protect-recipes";
 import { protect } from "@clerk/nextjs";
 
-import { PropsWithChildren } from "react";
-
-export async function fetchPatients(orgId: string) {
+async function fetchPatients(orgId: string) {
   await waitFor();
   return getPatientNames(orgId);
 }
 
-const Page = protect(canReadPatientsWithRedirect).component<PropsWithChildren>(
-  async ({ children, auth }) => {
+const Page = protect(canReadPatientsWithRedirect).component(
+  async ({ auth }) => {
     const patientNames = await fetchPatients(auth.orgId);
 
     return (
       <>
         <h1 className="text-2xl">All patients:</h1>
-        {children}
         <ul>
           {patientNames.map((name) => (
             <li key={name}>

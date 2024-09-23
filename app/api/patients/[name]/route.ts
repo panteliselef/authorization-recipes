@@ -1,4 +1,4 @@
-import { getPatientNames, removePatient } from "@/lib/db/patients";
+import { removePatient } from "@/lib/db/patients";
 import { waitFor } from "@/lib/server";
 import { protect } from "@clerk/nextjs";
 
@@ -14,7 +14,7 @@ export const DELETE = protect({
   .route(async (auth, req, { params }: { params: { name: string } }) => {
     console.log(req.url);
     await waitFor();
-    
+
     removePatient(params.name, auth.orgId);
 
     return new Response(

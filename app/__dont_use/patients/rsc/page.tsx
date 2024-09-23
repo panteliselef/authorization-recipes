@@ -2,8 +2,9 @@ import { DeletePatientButton } from "./delete-button";
 import { getPatientNames } from "@/lib/db/patients";
 import { waitFor } from "@/lib/server";
 
-export async function fetchPatients() {
+async function fetchPatients() {
   await waitFor();
+  // @ts-expect-error this is old
   return getPatientNames();
 }
 

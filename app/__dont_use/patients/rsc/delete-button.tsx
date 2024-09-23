@@ -7,6 +7,7 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 
 export const DeletePatientButton = ({ name }: { name: string }) => {
   const [, trigger, isPending] = useActionState(
+    // @ts-expect-error this is old
     (_, name: string) => {
       return deletePatientAction(name);
     },
